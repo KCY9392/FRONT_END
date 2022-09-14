@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>테두리 관련 스타일(border~)</title>
+
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            border-width: 3px;
+            margin: 15px;
+            background-color: pink;
+        }
+
+        #test1{
+            /*border-style : dotted; /*테두리 점선
+            border-style: dashed; /*테두리 뾰족한 점선
+            border-style: solid; /*테두리 실선
+            border-style: double;
+            border-style: groove;*/ /*버튼같은 테두리*/
+            border-style: ridge;
+            border-top-width: 10px;
+        }
+
+        #test2{
+            box-shadow: 5px 5px 5px 5px gray;
+            /*가로 세로 흐림정도 번짐정도 그림자색*/
+        }
+
+        #test3{
+            border-style: double ;
+            border-color: red;
+        }
+
+        #test4{
+            border-style: dashed;
+            border-top-right-radius: 50px;
+        }
+
+        #test5{
+            border-width: 5px;
+            border-style: dashed double solid dotted;
+            /*위는 dashed 오른쪽은 double
+              아래는 solid 왼쪽은 dotted로 설정함*/
+        }
+
+        #test6{
+            border-style: groove;
+            border-width: 10px;
+            border-bottom-right-radius: 80px;
+            border-top-left-radius: 80px;
+        }
+
+        #test7{
+            border-style: inset; /*면적 안쪽이 좀 패인 느낌*/
+            border-width: 5px;
+            background-color: deeppink;
+            border-top-left-radius: 60px;
+            border-bottom-right-radius: 60px;
+        }
+
+        #test8{
+            border-style: outset; /*면적 바깥쪽으로 튀어나온 느낌*/
+        }
+
+        #test9{
+            border-style: solid;
+            border-radius: 50px;
+        }
+
+        #test10{/*이 형태 가장많이 사용*/
+            border: 10px solid palevioletred;
+            /*상하좌우 10px의 solid모양의 핑크색상으로 테두리 생성*/
+        }
+
+
+        /*버튼 css 지정*/
+        #btn{
+            border: 2px dashed pink;
+            padding: 10px 20px;
+            border-radius: 10px;
+            border-width: 10px;
+        }
+
+        button:hover{
+            cursor: pointer;
+            background-color: skyblue;
+        }
+
+
+    </style>
+</head>
+<body>
+    
+    <h1>테두리 관련 스타일(border~)</h1>
+    <pre>
+        선택자{
+            *테두리 스타일
+            border-위치-style : none / dotted / dashed / solid
+                                double / groovve / ridge / inset
+            
+            *테두리 두께
+            border-위치-width : 테두리 두께;
+
+            *테두리 색상
+            border-위치-color : 테두리 색상;
+
+            *테두리 두께, 스타일, 색상 한번에 지정가능
+            border-위치 : 두께 스타일 색상; -> 색상 생략시, 글자 색과 통일
+            
+            *테두리 모서리를 둥글게 표현하는 방법
+            border-위/아래-/좌/우-radius : 숫자; -> 위치 생략시, 사방이 둥글어짐.
+        
+            *박스에 그림자 효과
+            box-shadow : 가로거리 세로거리 흐림정도 번짐정도 색상;
+        }
+
+        위치 => 위/아래/좌/우(top/bottom/left/right) : 생략가능
+    </pre>
+
+    <div id="test1"></div>
+    <div id="test2"></div>
+    <div id="test3"></div>
+    <div id="test4"></div>
+    <div id="test5"></div>
+    <div id="test6"></div>
+    <div id="test7"></div>
+    <div id="test8"></div>
+    <div id="test9"></div>
+    <div id="test10"></div>
+
+    <br>
+
+    <button id="btn">일반버튼</button>
+
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+</body>
+</html>

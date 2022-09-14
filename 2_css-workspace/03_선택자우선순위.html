@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>선택자우선순위</title>
+
+    <style>
+        h1{
+            background-color: pink;
+            color: yellow;
+        }
+        h1{
+            color: white;
+        }
+
+        
+        #id1{ /*태그,클래스선택자보다 id선택자가 우선순위가 더 높다*/
+            background-color: pink;
+        }
+        div{
+            background-color: teal; /*!important;*/
+            /* !important
+            선택자 우선순위 없이 그냥 얘부터 먼저 적용시키겠다는 의미*/
+            color: red;
+            width: 200px;
+            height: 200px;
+        }
+        .class1{/*태그선택자보다 클래스 선택자가 우선순위가 더 높다*/
+            background-color: yellowgreen; /*안바뀜*/
+            color: white; /*바뀜*/
+        }
+    </style>
+
+
+</head>
+<body>
+    <h1>선택자 우선순위</h1>
+    <p>
+        기본적으로 css는 위에서부터 아래로 적용된다<br>
+        동일한 요소를 다양한 선택자로 css가 부여된 경우, 
+        우선순위에 따라 적용된다 <br>
+        태그 선택자 -> 클래스 선택자 -> 아이디선택자 -> 인라인스타일방식
+        -> !important(무엇이든 여기가 제일 css먼저 작용할거야) 겹치지 않은 스타일 같은 경우는 반영된다
+    </p>
+
+    <!-- #id.class1 + enter-->
+    <div id="id1" class="class1" style="background-color: purple; color:pink;">우선순위 테스트</div>
+</body>
+</html>
