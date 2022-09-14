@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>영역 관련 태그</title>
+    <!--solid는 실선 dashed는 점선-->
+    <style>
+        div, span{
+            border: 2px dashed black;
+        }
+        #div1, #span1{
+            background-color: red;
+        }
+
+        #div2, #span2{
+            background-color: yellow;
+        }
+
+        #div3, #span3{
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <h1>영역 관련 태그</h1>
+    <!-- 
+        블럭요소 : 한 줄 단위로 영역을 차지하는 요소
+                  줄바꿈이 적용되어 이미 존재하는 요소의 다음 줄에 출력
+                  ex) h태그, p태그, pre태그 ... div 태그
+
+        인라인요소 : content 내용에 해당되는 부분만 영역을 차지하는 요소
+                    줄바꿈이 적용되지 않아 옆으로 연이어져서 출력
+                    다음줄로 넘기고자 할때는 br로 개행해야한다
+                    ex) b, s, mark, input, ... , span 태그
+    -->
+    <hr>
+    <h2>div태그와 span태그의 차이 1 : 줄바꿈 적용</h2>
+
+    <h3>div 태그 : 블럭요소(한줄 단위 영역차지)</h3>
+    <div id="div1">첫번재 영역</div><div id="div2">두번째 영역</div><div id="div3">세번째 영역</div>
+
+    <h3> span 태그 : 인라인 요소(content 영역만을 차지)</h3>
+    <!-- span#span$*3 하면 3개의 span태그가 생성된다-->
+    <span id="span1">첫번째 영역</span>
+    <span id="span2">두번째 영역</span>
+    <span id="span3">세번째 영역</span>
+    <br><br>
+    <hr>
+
+    <h2>div태그와 span태그의 차이 2 : 영역 지정방식</h2>
+    <h3>div 태그 : 전체 감싸는 사각형 박스로 영역을 지정</h3>
+    <!-- 한글입숨에서 무작위 텍스트 생성해옴 -->
+    <div>
+        불러 품고 그러므로 힘있다. 같이, 위하여서 보는 곳이 간에 풍부하게 인간의 불어 사막이다. 대중을 새가 눈에 얼음 두기 인간의 너의 바이며, 피어나기 힘있다. 싸인 그들에게 두기 갑 꽃이 커다란 살 행복스럽고 눈이 때문이다. 이상 유소년에게서 우리 행복스럽고 인생을 같은 무엇을 수 것이다. 그들은 인간의 속에서 사는가 커다란 현저하게 것이다. 우리 그러므로 청춘을 가치를 청춘 천고에 품고 말이다. 꽃 있는 싹이 대한 현저하게 칼이다. 지혜는 그들의 모래뿐일 품으며, 고동을 봄바람이다. 얼마나 찾아 용감하고 희망의 얼음이 소리다.이것은 것은 그림자는 불어 교향악이다.
+    </div>
+
+    <h3>span 태그 : 문장단위로 영역을 지정</h3>
+    <span>
+        불러 품고 그러므로 힘있다. 같이, 위하여서 보는 곳이 간에 풍부하게 인간의 불어 사막이다. 대중을 새가 눈에 얼음 두기 인간의 너의 바이며, 피어나기 힘있다. 싸인 그들에게 두기 갑 꽃이 커다란 살 행복스럽고 눈이 때문이다. 이상 유소년에게서 우리 행복스럽고 인생을 같은 무엇을 수 것이다. 그들은 인간의 속에서 사는가 커다란 현저하게 것이다. 우리 그러므로 청춘을 가치를 청춘 천고에 품고 말이다. 꽃 있는 싹이 대한 현저하게 칼이다. 지혜는 그들의 모래뿐일 품으며, 고동을 봄바람이다. 얼마나 찾아 용감하고 희망의 얼음이 소리다.이것은 것은 그림자는 불어 교향악이다.
+    </span>
+    <br><br>
+    <hr>
+
+    <h1>iframe 태그</h1>
+    <p>
+        현재 문서내에 다른 웹페이지를 추가하는 태그
+    </p>
+    <iframe src="4_이미지및멀티미디어관련태그.html" width="600" height="800"></iframe>
+    <!-- -->
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/oZS74-w719E"></iframe>
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+</body>
+</html>
