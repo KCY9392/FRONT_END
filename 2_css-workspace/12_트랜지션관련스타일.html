@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>트랜지션 관련 스타일</title>
+
+    <style>
+        /*태그 이동*/
+        img{
+            margin-left: 200px; /*body좌측과 200px 거리두기*/
+            width: 200px;
+            height: 200px;
+        }
+        .translate:active{
+            transform: translate(200px, 200px); 
+                                /*x축 y축 이동*/
+        }
+
+        .transx:hover{
+            transform: translateX(100px);
+        }
+
+        .transy:active{
+            transform: translateY(500px);
+        }
+
+        .transz:hover{
+            transform: perspective(200px) translateZ(50px);
+            /*translateZ 만 하면 아무 동작 X
+              perspective() 와 같이 하면 클릭 시, 이미지 커진다*/
+        }
+
+
+        h3~p{
+            margin-left: 200px;
+        }
+        .scale:hover{
+            transform: scale(1.5);
+        }/*옆으로 늘어남*/
+        .scalex:hover{
+            transform: scaleX(1.5);
+        }/*옆으로 늘어나는데 조금 위아래가 작음*/
+        .scaley:hover{
+            transform: scaleY(1.5);
+        }/*위아래로 늘어남*/
+
+
+
+        .skew:hover{
+            transform: skew(30deg, 30deg);
+        }
+
+
+
+
+        .transitiondiv{
+            width: 100px;
+            height: 100px;
+            border: 3px solid pink;
+
+            transition-property: /*all; 모든 속성*/
+                                 transform/*왓다갓다 함*/ 
+                                 background-color/*배경색이 천천히 돌아옴*/;
+            transition-duration: 1s;
+        }
+        input:checked~div{
+            background-color: rgb(252, 158, 189);
+            transform: translateX(200px);
+        }
+        .transition:hover{
+            background-color: deeppink;
+        }
+
+
+        /*이동하는 방식이 조금씩 다 다름*/
+        .transi1{
+            transition-timing-function: linear; 
+            /*돌아오는 시간은 동일한데 뭔가 조금 느림*/
+        }
+        .transi2{
+            transition-timing-function: ease; 
+        }
+        .transi3{
+            transition-timing-function: ease-in; 
+        }
+        .transi4{
+            transition-timing-function: ease-in-out; 
+        }
+        .transi5{
+            transition-timing-function: ease-out; 
+        }
+        .transi6{
+            transition-timing-function: step-end; 
+        }
+        .transi7{
+            transition-timing-function: cubic-bezier(.21,.99,.83,0); 
+        } /*cubie-bezier와 linear는 동일하다*/
+
+        /*https://cubic-bezier.com*/
+
+
+    </style>
+</head>
+<body>
+    <h1>트랜지션 관련 스타일</h1>
+    <h2>변형</h2>
+    <p>
+        태그가 특정동작(마우스클릭, 마우스올라감)에 의해 
+        변형(이동, 확대, 찌그러짐) 되는 것
+    </p>
+
+
+    <h3>1) 태그 이동시키기</h3>
+    <p>
+        1) translate 함수를 이용해서 설정된 태그가 
+        특정위치로 이동하게끔 설정
+    </p>
+
+    <img class="translate" src="resources/image/peng.jpg"
+      width="200" height="200"/>
+    
+    
+    <br><br>
+
+    <img class="transx" src="resources/image/peng.jpg"
+      width="200" height="200"/>
+
+    <br><br>
+
+    <img class="transy" src="resources/image/peng.jpg"
+      width="200" height="200"/>
+
+    <br><br>
+
+    <img class="transz" src="resources/image/peng.jpg"
+      width="200" height="200"/>
+
+    <br><br><hr>
+
+
+
+
+
+    <h3>2) scale</h3>
+    <p class="scale">
+        안녕하세용 챙입니다.
+    </p>
+
+    <p class="scalex">
+        안녕하세용 챙입니다.
+    </p>
+    <img class="scaley" src="resources/image/jun.png"/>
+    <br><br><hr>
+
+
+
+
+
+    <h3>3) skew</h3>
+    <img class="skew" src="resources/image/bono.jpg"/>
+    <br><br><hr>
+
+
+
+
+
+
+    <h3>트랜지션 적용하기</h3>
+    <p>
+        태그가 변형속성에 의해 변형이 될때
+        '부드럽게' 변형이 될 수 있게 도와주는 속성들
+
+        <br> - transition-property : 적용할 속성
+        <br> - transition-duration : 지속시간
+        <br> - transition-timing-function : linear / ease / ease-in ,... 
+                : 빠르기 를 조절
+        <br> - transition : 위의 속성들을 한번에 지정가능
+    </p>
+
+    <br><br><hr>
+    
+    <input type="checkbox">
+    <div class="transitiondiv transition transi1"></div>
+    <div class="transitiondiv transition transi2"></div>
+    <div class="transitiondiv transition transi3"></div>
+    <div class="transitiondiv transition transi4"></div>
+    <div class="transitiondiv transition transi5"></div>
+    <div class="transitiondiv transition transi6"></div>
+    <div class="transitiondiv transition transi7"></div>
+
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
