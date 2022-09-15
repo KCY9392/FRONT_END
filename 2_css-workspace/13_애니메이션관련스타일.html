@@ -5,6 +5,56 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>애니메이션 관련 스타일</title>
+
+    <style>
+        input:checked+.anitest{
+            width: 200px;
+            animation-name : ani;
+            animation-duration: 4s;
+            animation-direction: alternate; /*왓다갓다 계속 실행*/
+            animation-iteration-count: infinite;/*몇번반복할건지*/
+        }
+
+        @keyframes ani {
+            from{
+                background-color: rgb(103, 246, 103);
+                border: 1px solid yellow;
+            }
+            to{
+                background-color: pink;
+                border-radius: 50%;
+                transform: rotate(720deg);
+                border : 1px solid palevioletred;
+            }
+        }
+
+
+
+
+        input:checked+.anitest2{
+            animation: ani2 5s infinite alternate;
+        }
+
+        @keyframes ani2{
+            0%{
+                     background-color: pink;
+                    border: 3px solid deeppink;
+                }
+                30%{
+                    transform: translate(-100px , -100px);
+                }
+                50%{
+                    background-color: rgb(255, 140, 159);
+                    transform: scale(1.2);
+                    border: 5px solid violet;
+                }
+                100%{
+                    background-color: white;
+                    transform: rotate(45deg);
+                    border : 1px solid red;
+                }
+        }
+    </style>
 </head>
 <body>
     <h1>애니메이션 관련 스타일</h1>
@@ -23,9 +73,8 @@
 
     <h3>keyframes</h3>
     <p>
-        애니메이션 시작지점과 끝지점의 스타일을 정하고,
-        key frames의 이름을 지정
-        시작지점과 끝지점 두개만 설정할 경우, 
+        애니메이션 시작지점과 끝지점의 스타일을 정하고, key frames의 이름을 지정
+        <br>- 시작지점과 끝지점 두개만 설정할 경우, 
         from to로 설정
         중간에 작업이 더 있으면, %로 실행할 단위를 구분하여 설정
     </p>
@@ -35,34 +84,19 @@
         }
     </pre>
 
+    <input type="checkbox">
+    <div class="anitest" >기본 애니메이션 적용</div>
+
+    <br><br>
+    <input type="checkbox">
+    <div class="anitest2">기본 애니메이션 적용</div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    <!--
+        내가 원하는 애니메이션 형태로 만들기 어려움
+        이미 만들어져있는ㄴ 자료들로 사용하도록 하자
+        animate.css
+    -->
     
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
