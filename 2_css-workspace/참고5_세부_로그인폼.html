@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>세부 로그인폼</title>
+
+    <style>
+        div, form{
+            box-sizing: border-box;
+            border: 2px solid pink;
+        }
+
+        .content3{
+            width: 300px;
+            height: 600px;
+        }
+        #login_form{
+            height: 30%;
+            width: 100%;
+        }
+
+        #login_form>*{
+            width: 100%;
+        }
+
+        #login_form_input{
+            height: 80%;
+        }
+
+        #login_form_etc{
+            height: 20%;
+            text-align: center;
+        }
+
+        #login_form_etc>*{
+            text-decoration: none;
+            color: palevioletred;
+            margin: 7px;
+            font-size: 13px;
+            vertical-align: middle;
+        }
+
+        #login_form_input>*{
+            height: 100%;
+            float: left;
+        }
+
+        #login_input_id_pwd{
+            width: 65%;
+        }
+
+        #login_input_btn{
+            width: 35%;
+        }
+
+        #login_input_id_pwd>input{
+            width: 100%;
+            height: 50%;
+            box-sizing: border-box;
+        }
+
+        #login_input_btn>input{
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="content3">
+        <!-- 1. 전체내용을 감싸는 div-->
+
+        <div id="login_form">
+            <!-- 2_1. 입력을 받는 input 요소들이 위치할 form영역 -->
+            <form action="test.do" id="login_form_input">
+                <!-- 3_1. 왼쪽영역 : id와 pwd를 입력받을 text영역 -->
+                <div id="login_input_id_pwd">
+                    <input id="idin" type="text" name="userId" placeholder="아이디 입력" required><br>
+                    <input id="pwdin" type="password" placeholder="비밀번호 입력" required>
+                </div>
+
+                <!-- 3_2. 오른쪽영역 : 로그인 버튼이 위치할 button 영역-->
+                <div id="login_input_btn">
+                    <input type="submit" value="로그인">
+                </div>
+            </form>
+
+            <!-- 2_2. 회원가입, id/pwd찾기 페이지 요청 a태그들이 위치할 div-->
+            <div id="login_form_etc">
+                <a href=""><b>회원가입</b></a>
+                <a href=""><b>ID/PW 찾기</b></a>
+            </div>
+
+
+
+
+
+        </div>
+    </div>
+</body>
+</html>

@@ -4,79 +4,90 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>화면구조잡기 실습</title>
+    <title>화면구조잡기 상세구조</title>
 
     <style>
-        div{
-            border: 2px solid deeppink;
+
+div{
+            border: 2px solid pink;
             box-sizing: border-box;
         }
 
-        .wrap{
+        #wrap{
             width: 1000px;
             height: 800px;
             margin: auto;
         }
-
-        .wrap>div{
+        #wrap>div{
             width: 100%;
         }
-
         .header, .footer{
             height: 20%;
         }
+
+        .navigator{
+            height: 5%;
+        }
+        .content{
+            height: 55%;
+        }
+
 
         .header>div , .content>div{
             height: 100%;
             float: left;
         }
 
-        .h1{
+        .header1{
             width: 30%;
         }
 
-        .h2{
+        .header2{
             width: 70%;
         }
 
-        .content{
-            height: 60%;
-        }
 
 
-        .c1{
+        .content1{
             width: 15%;
         }
 
-        .c2{
+        .content2{
             width: 65%;
         }
 
-        .c3{
+        .content3{
             width: 20%;
         }
-    </style>
 
+    </style>
 </head>
+
 <body>
-    
-    <div class="wrap">
+    <div id="wrap">
+        <!-- 
+            1. header
+            ++ navigator 영역
+            2. content
+            3. footer
+        -->
         <div class="header">
-                <div class="h1"></div>
-                <div class="h2"></div>
+            <div class="header1"></div>
+            <div class="header2"></div>
         </div>
 
+        <div class="navigator"></div>
+
         <div class="content">
-                <div class="c1"></div>
-                <div class="c2"></div>
-                <div class="c3"></div>
+            <div class="content1"></div>
+            <div class="content2"></div>
+            <div class="content3"></div>
         </div>
 
         <div class="footer"></div>
-
     </div>
 
 
-
 </body>
+
 </html>
