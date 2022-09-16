@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메뉴바</title>
+
+    <style>
+        div{
+            /*border: 2px solid palevioletred;*/
+            box-sizing: border-box;
+            background-color: rgb(255, 230, 233);
+        }
+
+        .navigator{
+            width: 1000px;
+            height: 40px;
+        }
+
+        #navi{
+            /*border: 1px solid pink;*/
+            list-style-type: none;
+
+            margin: 0;
+            padding: 0;
+            /* ul요소는 기본적으로 위,아래 margin이 존재한다
+               ul요소에 paddin도 존재한다
+               다 지우면,모든요소가 왼쪽에 달라붙을 것이다*/
+            height: 100%;
+        }
+
+        #navi>li{
+            /*border: 1px solid pink;*/
+            float: left;
+            width: 15%;
+            height: 100%;
+            text-align: center;
+        }
+
+        #navi a{
+            text-decoration: none;
+            color: gray;
+            font-size: 17px;
+            font-weight: 600;
+            
+            /*border: 1px solid pink;*/
+            width: 100%;
+            height: 100%;
+            /*inline요소이기때문에 
+              content만 적용된다
+              따라서 display : block요소로 변경해야함*/
+            display: block;
+
+
+            /*vertical-align: middle;*/
+            /*적용X -> block요소에는 vertical속성적용X
+                       vertical속성은 inline요소에만O*/
+            line-height: 30px;
+            /*block요소의 세로길이만큼 크기를 부여하면,
+              자동으로 가운데 정렬된다*/
+            }
+
+            #navi a:hover{
+                font-size: 20px;
+                color: rgb(32, 32, 32);
+            }
+
+            #navi>li>ul{
+                list-style-type: none;
+                padding: 0;
+                display: none;
+            }
+
+            #navi>li>ul a{
+                font-size: 12px;
+            }
+
+            #navi>li>ul a:hover{
+                font-size: 15px;
+            }
+
+            /*id가 navi인 요소의 자손 중 
+                            li의 자손 중
+              a태그에 마우스가 올라갔을때,
+              같은레벨의 바로뒤에 있는 요소를 가져온다 */
+            #navi>li>a:hover + ul{
+                display: block;
+            }
+
+            #navi>li>ul:hover{
+                display: block;
+            }
+    </style>
+</head>
+<body>
+    <div class="navigator">
+        <ul id="navi">
+            <li><a href="">java</a></li>
+            <li><a href="">Oracle</a></li>
+            <li>
+                <a href="">Front-End</a>
+                <ul>
+                    <li><a href="">HTML</a></li>
+                    <li><a href="">CSS</a></li>
+                    <li><a href="">Javascript</a></li>
+                    <li><a href="">Jquery</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="">Server</a>
+                <ul>
+                    <li><a href="">JDBC</a></li>
+                    <li><a href="">Servlet</a></li>
+                    <li><A href="">JSP</A></li>
+                    <li><a href="">Ajax</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="">Framework</a>
+                <ul>
+                    <li><a href="">MyBatis</a></li>
+                    <li><a href="">Spring</a></li>
+                </ul>
+            </li>
+        </ul>
+
+    </div>
+</body>
+</html>

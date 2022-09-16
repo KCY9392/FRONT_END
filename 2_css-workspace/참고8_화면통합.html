@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>화면통합</title>
+
+    <style>
+        div{
+            border: 2px solid pink;
+            box-sizing: border-box;
+        }
+
+        #wrap{
+            width: 1000px;
+            height: 800px;
+            margin: auto;
+        }
+
+
+        #wrap>div{
+            width: 100%;
+        }
+        
+        
+        .header, .footer{
+            height: 20%;
+        }
+        
+        .header>div , .content>div{
+            height: 100%;
+            float: left;
+        }
+        
+        
+        .navigator{
+            height: 5%;
+        }
+        
+
+        #navi{
+            /*border: 1px solid pink;*/
+            list-style-type: none;
+
+            margin: 0;
+            padding: 0;
+            /* ul요소는 기본적으로 위,아래 margin이 존재한다
+               ul요소에 paddin도 존재한다
+               다 지우면,모든요소가 왼쪽에 달라붙을 것이다*/
+            height: 100%;
+        }
+
+        #navi>li{
+            /*border: 1px solid pink;*/
+            float: left;
+            width: 15%;
+            height: 100%;
+            text-align: center;
+        }
+
+        #navi a{
+            text-decoration: none;
+            color: gray;
+            font-size: 17px;
+            font-weight: 600;
+            
+            /*border: 1px solid pink;*/
+            width: 100%;
+            height: 100%;
+            /*inline요소이기때문에 
+              content만 적용된다
+              따라서 display : block요소로 변경해야함*/
+            display: block;
+
+
+            /*vertical-align: middle;*/
+            /*적용X -> block요소에는 vertical속성적용X
+                       vertical속성은 inline요소에만O*/
+            line-height: 30px;
+            /*block요소의 세로길이만큼 크기를 부여하면,
+              자동으로 가운데 정렬된다*/
+
+            transform: scale(1);
+            }
+
+            #navi a:hover{
+                font-size: 20px;
+                color: rgb(32, 32, 32);
+            }
+
+            #navi>li>ul{
+                list-style-type: none;
+                padding: 0;
+                display: none;
+            }
+
+            #navi>li>ul a{
+                font-size: 12px;
+            }
+
+            #navi>li>ul a:hover{
+                font-size: 15px;
+            }
+
+            /*id가 navi인 요소의 자손 중 
+                            li의 자손 중
+              a태그에 마우스가 올라갔을때,
+              같은레벨의 바로뒤에 있는 요소를 가져온다 */
+            #navi>li>a:hover + ul{
+                display: block;
+            }
+
+            #navi>li>ul:hover{
+                display: block;
+            }
+
+
+
+
+
+            
+            
+
+            
+            
+            .header1{
+                position: relative;
+                width: 25%;
+            }
+
+            
+            /* 부모요소에 넣어줘도 이미지 가운데 정렬된다
+                text-align: center;
+                align-items: center;
+                display: flex;
+                justify-content: center;
+            */
+
+            #logo{
+                margin: auto;
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+
+            }
+            
+            
+            
+            
+            
+            
+           
+            
+            div, form, input{
+                /*미리 가로세로길이를 테두리 포함되서 설정하여 튀어나오는 것을 방지*/
+                box-sizing: border-box;
+                /*border: 1px solid palevioletred;*/
+            }
+            
+            .header2{
+                width: 75%;
+                position: relative;
+            }/*변경될 가능성있음*/
+            
+            
+            #search_form{
+                width: 80%;
+                height: 20%;
+                margin: auto;/*상하좌우공백 비워주기*/
+                position: absolute;/*검색창 가운데 정렬*/
+                right: 0;
+                left: 0;
+                top: 0;
+                bottom: 0;
+            }
+            #search_form>div{
+                height: 100%;
+            float: left;
+        }
+        
+        #search_text{
+            width: 80%;   
+        }
+        #search_btn{
+            width: 20%;
+        }
+        #search_form input{
+            width: 100%;
+            height: 100%;
+        }
+        
+        
+        
+        
+        
+        
+
+
+
+        
+    .content{
+        height: 55%;
+    }
+        
+        .content1{
+            width: 15%;
+        }
+        
+        .content2{
+            width: 65%;
+        }
+        
+        
+        
+
+
+        .content3{
+            width: 20%;
+        }
+        #login_form{
+            height: 30%;
+            width: 100%;
+        }
+
+        #login_form>*{
+            width: 100%;
+        }
+
+        #login_form_input{
+            height: 80%;
+        }
+
+        #login_form_etc{
+            height: 20%;
+            text-align: center;
+        }
+
+        #login_form_etc>*{
+            text-decoration: none;
+            color: palevioletred;
+            margin: 7px;
+            font-size: 13px;
+            vertical-align: middle;
+        }
+
+        #login_form_input>*{
+            height: 100%;
+            float: left;
+        }
+
+        #login_input_id_pwd{
+            width: 65%;
+        }
+
+        #login_input_btn{
+            width: 35%;
+        }
+
+        #login_input_id_pwd>input{
+            width: 100%;
+            height: 50%;
+            box-sizing: border-box;
+        }
+
+        #login_input_btn>input{
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+        }
+
+
+
+        .footer{
+            padding: 5px 0 0 15px;
+        }
+
+        .footer>p{
+            width: 100%;
+            margin: 0;
+            /*margin:0은 외부요소와 간격을 0으로 만듦*/
+            padding: 10px;
+            box-sizing: border-box;
+            font-size: 12px;
+            /*p태그가 아니라 div태그면 글자크기가 크면 튀어나오기때문에
+              border-box 한 것임.*/
+        }
+
+
+        .p1{
+            height: 75%;
+        }
+
+        .p2{
+            height: 20%;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    <body>
+    
+        <div id="wrap">
+            <!-- 
+                1. header
+                ++ navigator 영역
+                2. content
+                3. footer
+            -->
+            <div class="header">
+
+                <div class="header1">
+                    <img src="resources/image/kh_logo.jpg" id="logo"/>
+                </div>
+
+
+
+                <div class="header2">
+                        <form action="test.do" id="search_form">
+                            <div id="search_text">
+                                <input type="text" name="keyword">
+                            </div>
+                            <div id="search_btn">
+                                <input type="submit" value="검색">
+                            </div>
+                        </form>
+                </div>
+            </div>
+    
+
+
+            <div class="navigator">
+                <ul id="navi">
+                    <li><a href="">java</a></li>
+                    <li><a href="">Oracle</a></li>
+                    <li>
+                        <a href="">Front-End</a>
+                        <ul>
+                            <li><a href="">HTML</a></li>
+                            <li><a href="">CSS</a></li>
+                            <li><a href="">Javascript</a></li>
+                            <li><a href="">Jquery</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="">Server</a>
+                        <ul>
+                            <li><a href="">JDBC</a></li>
+                            <li><a href="">Servlet</a></li>
+                            <li><A href="">JSP</A></li>
+                            <li><a href="">Ajax</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="">Framework</a>
+                        <ul>
+                            <li><a href="">MyBatis</a></li>
+                            <li><a href="">Spring</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+    
+
+
+            <div class="content">
+                <div class="content1"></div>
+                <div class="content2"></div>
+                
+                <div class="content3">
+                    <div id="login_form">
+                        <!-- 2_1. 입력을 받는 input 요소들이 위치할 form영역 -->
+                        <form action="test.do" id="login_form_input">
+                            <!-- 3_1. 왼쪽영역 : id와 pwd를 입력받을 text영역 -->
+                            <div id="login_input_id_pwd">
+                                <input id="idin" type="text" name="userId" placeholder="아이디 입력" required><br>
+                                <input id="pwdin" type="password" placeholder="비밀번호 입력" required>
+                            </div>
+            
+                            <!-- 3_2. 오른쪽영역 : 로그인 버튼이 위치할 button 영역-->
+                            <div id="login_input_btn">
+                                <input type="submit" value="로그인">
+                            </div>
+                        </form>
+            
+                        <!-- 2_2. 회원가입, id/pwd찾기 페이지 요청 a태그들이 위치할 div-->
+                        <div id="login_form_etc">
+                            <a href=""><b>회원가입</b></a>
+                            <a href=""><b>ID/PW 찾기</b></a>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+    
+            <div class="footer">
+
+                    <p class="p1">
+                    강남지원 1관 : 서울특별시 강남구 테헤란로14길 6 남도빌딩 2F, 3F, 4F, 5F, 6F<br>
+                    강남지원 2관 : 서울특별시 강남구 테헤란로10길 9 그랑프리 빌딩 4F, 5F, 7F<br>
+                    강남지원 3관 : 서울특별시 강남구 테헤란로 130 호산빌딩 5F, 6F<br>
+                    종로지원 : 서울특별시 중구 남대문로 120 대일빌딩 2F,  3F<br>
+                    당산지원 : 서울특별시 영등포구 선유동2로 57 이레빌딩 (구관) 19F, 20F <br>
+                    </p>
+                    <p class="p2">
+                        Copyright © 1998-2022 KH Information Educational Institute All Right Reserved
+                    </p>
+
+            </div>
+
+        </div>
+
+</body>
+</html>
