@@ -77,18 +77,102 @@
             let divEl = document.querySelector("#area1");
             console.log(divEl);
             console.dir(divEl);
+
+            //선택된 요소 내에 정보들을 알아내고자한다면
+            //속성들에 직접 접근가능하다
+            console.log(divEl.id);
+            // 해당요소의 id값
+            console.log(divEl.className);
+            // 해당요소의 클래스값
+
+
+            //선택된 요소의 content영역안의 값에 접근하려면 ?
+            divEl.innerHTML; 
+            //innerHTML : 요소의 content영역 안의 html태그까지 포함한 녀석
+            divEl.innerText;
+            //innerText : content영역 값 내의 text만 가져오는 녀석 ( 태그는 안가져옴 )
+            
+
+            //위와같이 속성에 직접 접근해서 값을 가지고오는 것도 가능하지만,
+            //값을 변경하는 것도 가능하다
+            divEl.innerHTML = "<b>innerHTML로 속성값 변경함.</b>";
+            divEl.innerText = "<b>innerText방식으로 변경함</b>";
+            // b태그는 그냥 text로 가져옴.
+
+            // innerHTML로 변경하면 출력할 문구에 HTML태그가 있을 경우, 태그로 인식
+            // innerText로 변경하면 출력할 문구에 HTML태그가 있을 경우, 문자열로 인식
+
+            divEl.onclick = function(){
+                alert("하이");
+            }
         }
     </script>
 
+    <h2>5) window.confirm("출력구문.")</h2>
+    <p>
+        사용자에게 출력할 구문과 확인, 취소버튼을 보여주고
+        확인 클릭 시, true반환, 취소 클릭 시, false;
+    </p>
 
+    <button onclick="confirmTest();">삭제 버튼</button>
 
+    <script>
+        function confirmTest(){
 
+            //let boolean = confirm("삭제하실건가용");
+            if(confirm("삭제하실건가용")){ //이것도 가능
+                console.log("확인을 눌렀습니다");
+            }else{
+                console.log("취소하셨습니다.");
+            }
+        }
+    </script>
 
+    <br>
 
+    <h2>6) prompt</h2>
 
+    <button onclick="prompt('아이디를 입력해주세요')">입력</button>
+    <!-- 보안상 잘 안씀 -->
+    <p>
+        사용자에게 입력값을 받아서 반환하는 함수
+    </p>
 
+    <button onclick="prompt('아이디를 입력해주세요')">입력</button>
 
+    <h2>2. 데이터를 입력받는 기본구문(변수에 저장가능)</h2>
+    <p>
+        1) 변수 = window.confirm("질문내용"); <br>
+        2) 변수 = window.confirm("질문내용"); <br>
+        3) 변수 = 선택한요소.속성(id/className/innerHTML/innerText...)
+        4) 변수 = 선택한요소.input요소.value;
+    </p>
 
+    <h3>4) 선택한 요소.input요소.value;</h3>
+
+    ID : <input type="text" id="userId"><br>
+    PW : <input type="password" id="userPwd"><br>
+
+    <button onclick="testInput()";>Click</button>
+
+    <script>
+        function testInput(){
+            let input1 = document.querySelector("#userId");
+            let input2 = document.getElementById("userPwd");
+            //둘이 비슷한 기능의 의미
+
+            console.dir(input1);
+            console.dir(input2);
+
+            console.log(input1.value);
+            console.log(input2.value);
+
+            input1.value = "김챙";
+            input2.value = "킹왕짱";
+            // 입력하는 칸에 지정한 value값이 출력된다.
+            // console창에는 진짜 입력한 값이 제대로 들어간다.
+        }
+    </script>
 
 
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
