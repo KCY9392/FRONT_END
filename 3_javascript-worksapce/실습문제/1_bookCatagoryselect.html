@@ -48,22 +48,26 @@
 
         
    
-            <script> // 전체선택, 전체취소
-                area1 = document.querySelector("#area1");
+            <script> 
 
-                nameAll = document.querySelector('input[name="all"]');
+            /*
+                리펙토링 : 개발자가 소스코드를 효율적으로 관리하기 위해, 
+                          작업을 완료하고난 후, 다듬는 행위
+            */
+                const area1 = document.getElementById("area1");
 
-                nameSelect = document.querySelectorAll('input[name="select"]');
+                const nameAll = document.querySelector('input[name="all"]');
 
-                checkeds = document.querySelectorAll('input[name="select"]:checked');
+                const nameSelect = document.querySelectorAll('input[name="select"]');
 
+                
+
+                
                 //모든요소 선택시, 전체선택 체크, 
                 //하나라도 미체크시 , 전체선택 체크해제
-                function checkSelectAll(checkbox)  {
-                    
-                    if(checkbox.checked === false)  {
-                        nameAll.checked = false;
-                    }
+                function checkSelectAll()  {
+                    // 값이 매번 바뀌는 checkeds 변수는 전역변수로 빼면, 바뀐 상황을 보여줄수없다.
+                    let checkeds = document.querySelectorAll('input[name="select"]:checked');
 
                     if(nameSelect.length === checkeds.length)  {
                         nameAll.checked = true;
@@ -74,11 +78,11 @@
 
 
                 //전체선택 선택 시, 모든요소 체크하기
-                function selectAll(selectAll)  {
+                function selectAll()  {
                     
-                    nameSelect.forEach((checkbox) => {
-                        checkbox.checked = selectAll.checked
-                    })
+                    for(let i=0; i<nameSelect.length; i++){
+                        nameSelect[i].checked = nameAll.checked;
+                    }
                 }
                 
 
@@ -86,6 +90,8 @@
                 //카테고리 선택 
                 function CategorySelect(){
     
+                    let checkeds = document.querySelectorAll('input[name="select"]:checked');
+
                     for(let i=0; i<checkeds.length; i++){
                             area1.innerHTML += checkeds[i].value + " ";
                     }
