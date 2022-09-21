@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>간단 계산</title>
+    <style>
+        #result,#select, #btn, #num1, #num2{
+            float : left;
+            margin: 2px;
+            box-sizing: border-box;
+        }
+
+        #result{
+            border: 1px solid;
+            height: 22px;
+            width: 168px;
+        }
+
+
+    </style>
+</head>
+<body>
+    
+    <h1>Practice2</h1>
+
+    <input type="number" id="num1">
+    <select name="cal" id="select" onchange="select()">
+             <option value="plus">+</option>
+             <option value="minus">-</option>
+             <option value="mul">*</option>
+             <option value="div">/</option>
+             <option value="ro">%</option>
+    </select>
+    <input type="number" id="num2">
+
+        <button id="btn" onclick="calculation()">=</button>
+
+        <div id="result"></div>
+
+
+    <script>
+        function select(){
+            let calSelect = document.getElementById("select");
+
+            //option의 value값들 가져오기
+            let calvalue = calSelect.options[document.getElementById("select").selectedIndex].value;
+
+            return calvalue;
+        }
+
+        function calculation(){
+
+            let result = document.querySelector("#result");
+
+            result.style.background = "white";
+            result.innerHTML = null;
+
+            let calval = select();
+
+            let num1 = document.querySelector('input[id="num1"]').value;
+            let num2 = document.querySelector('input[id="num2"]').value;
+
+
+            console.log(calval); // 연산(plus, minus, ..) 잘나옴
+
+            if(calval === "plus"){
+                result.innerHTML += Number(num1) + Number(num2);
+            }
+            else if(calval === "minus"){
+                result.innerHTML += Number(num1) - Number(num2);
+            }
+            else if(calval === "mul"){
+                result.innerHTML += Number(num1) * Number(num2);
+            }
+            else if(calval === "div"){
+                if(Number(num2) == 0 || Number(num1) == 0){
+                    result.style.background = "red";
+                    result.innerHTML += "연산불가";
+                }else{
+                    result.innerHTML += Number(num1) / Number(num2);
+                }
+            }
+            else if(calval === "ro"){
+                if(Number(num2) == 0 || Number(num1) == 0){
+                    result.style.background = "red";
+                    result.innerHTML += "연산불가";
+                }else{
+                    result.innerHTML += Number(num1) % Number(num2);
+                }
+            }
+
+        }
+    </script>
+
+</body>
+</html>
