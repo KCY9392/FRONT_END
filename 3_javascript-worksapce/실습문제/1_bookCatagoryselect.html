@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>책 카테고리 선택</title>
+
+    <style>
+        #fs1{
+            width: 700px;
+        }
+        #area1{
+            width: 725px;
+            height: 200px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>Pratice1</h1>
+
+    <form action="">
+        <fieldset id="fs1">
+            <legend>취미</legend>
+            <input type="checkbox"  name="all" onclick='selectAll(this)'>전체선택
+            <input type="checkbox"  name="select" value="종합" onclick='checkSelectAll(this)'>종합
+            <input type="checkbox"  name="select" value="소설" onclick='checkSelectAll(this)'>소설
+            <input type="checkbox"  name="select" value="시/에세이" onclick='checkSelectAll(this)'>시/에세이
+            <input type="checkbox"  name="select" value="경제/경영" onclick='checkSelectAll(this)'>경제/경영
+            <input type="checkbox"  name="select" value="자기계발" onclick='checkSelectAll(this)'>자기계발
+            <input type="checkbox"  name="select" value="아동" onclick='checkSelectAll(this)'>아동
+            <br>
+            <input type="checkbox"  name="select" value="여행" onclick='checkSelectAll(this)'>여행
+            <input type="checkbox"  name="select" value="과학" onclick='checkSelectAll(this)'>과학
+            <input type="checkbox"  name="select" value="역사/문화" onclick='checkSelectAll(this)'>역사/문화
+            <input type="checkbox"  name="select" value="외국어" onclick='checkSelectAll(this)'>외국어
+            <input type="checkbox"  name="select" value="컴퓨터" onclick='checkSelectAll(this)'>컴퓨터
+            <input type="checkbox"  name="select" value="만화" onclick='checkSelectAll(this)'>만화
+        </fieldset>
+
+        <br>
+
+        <button type="button" onclick="CategorySelect()">카테고리 선택</button>
+        <div id="area1" name="category"></div>
+
+
+        
+   
+            <script> // 전체선택, 전체취소
+                area1 = document.querySelector("#area1");
+
+                nameAll = document.querySelector('input[name="all"]');
+
+                nameSelect = document.querySelectorAll('input[name="select"]');
+
+                checkeds = document.querySelectorAll('input[name="select"]:checked');
+
+                //모든요소 선택시, 전체선택 체크, 
+                //하나라도 미체크시 , 전체선택 체크해제
+                function checkSelectAll(checkbox)  {
+                    
+                    if(checkbox.checked === false)  {
+                        nameAll.checked = false;
+                    }
+
+                    if(nameSelect.length === checkeds.length)  {
+                        nameAll.checked = true;
+                    }else {
+                        nameAll.checked = false;
+                    }
+                }
+
+
+                //전체선택 선택 시, 모든요소 체크하기
+                function selectAll(selectAll)  {
+                    
+                    nameSelect.forEach((checkbox) => {
+                        checkbox.checked = selectAll.checked
+                    })
+                }
+                
+
+
+                //카테고리 선택 
+                function CategorySelect(){
+    
+                    for(let i=0; i<checkeds.length; i++){
+                            area1.innerHTML += checkeds[i].value + " ";
+                    }
+                }
+            </script>
+         </form>
+</body>
+</html>
