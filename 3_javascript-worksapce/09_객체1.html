@@ -163,6 +163,188 @@
         }
     </script>
 
+    <br><hr>
+
+
+
+
+    <h3>* 객체의 메소드 속성</h3>
+
+    <p>
+        객체의 속성 중 함수 자료형인 속성을 메소드라고 부른다. 
+    </p>
+
+    <button onclick="test4()">실행하기</button>
+
+    <div id="area4" class="area small"></div>
+
+    <script>
+        function test4(){
+            let area4 = document.getElementById("area4");
+
+            let name = "김채영";
+            let cat = {
+                name : "코코",
+                kind : "브리티쉬숏헤어",
+                eat : function(food){
+                    //area4.innerHTML += "eat메소드가 호출되었습니다<br>";
+                    //area4.innerHTML += "food : "+food; 
+
+                // 브리티쉬숏헤어인 코코가 츄르를 먹고 있어요; 를 출력하기
+                    area4.innerHTML += this.kind +"인 "+this.name+"가 "+food+"를 먹고있어요<br>";
+                    //this.kind 와 cat.kind 는 동일하다. (this = cat)
+                    
+                    area4.innerHTML += this.kind +"인 "+name+"가 "+food+"를 먹고있어요";
+                    //메소드 속성내에 같은 객체 내의 속성을 호출할때는 this.을 붙여서 제시
+                    //this.name에서 this를 지우면 eat함수 외부의 지역변수인 name이 호출되어서 김채영 이 출력된다.
+                }
+            };
+            cat.eat("츄르");
+        }
+    </script>
+
+    <br><hr>
+
+    <h3>* in과 with 키워드</h3>
+    <p>
+        in : 객체 내에 해당 속성이 있는 지 확인해주는 메소드
+        with : 객체명 제시하는 것을 생략할 수 있음(코드를 줄여주는 키워드)
+    </p>
+
+    <!-- input:number*4 -->
+    이름 : <input type="text" name="" id="name"><br>
+    국어 : <input type="number" name="" id="kor"><br>
+    수학 : <input type="number" name="" id="math"><br>
+    영어 : <input type="number" name="" id="eng"><br>
+
+    <button onclick="test5()">실행확인</button>
+
+    <div id="area5" class="area big"></div>
+
+    <script>
+        function test5(){
+            let name = document.querySelector("#name").value;
+            let kor = +document.querySelector("#kor").value;
+            // +(단항연산자)를 특정요소 앞에 쓰이면, 정수로 변환된다.
+            let math = parseInt(document.querySelector("#math").value);
+            let eng = Number(document.querySelector("#eng").value);
+
+            let area5 = document.querySelector("#area5");
+
+            let student = {
+                name, // key와 value 명이 동일하면 이렇게 작성가능
+                kor,
+                math,
+                eng,
+                /*getSum : function(){
+                    return kor+math+eng;
+                }, */
+
+                //위 익명함수를 화살표 함수로 변경
+                getSum : () => { //화살표 함수 (function을 지워주고 => 하면된다.)
+                    return kor+math+eng;
+                },
+                // 단순한 return문이라면,
+                // getSum : () => kor+math+eng , 로 작성해도된다.
+                getAvg : function(){
+                    //원래하던방법 -> return (kor+math+eng) / 3;
+                    return student.getSum() / 3;
+                    //혹은 this.getSum()으로 호출해야된다.
+                }
+            };
+            area5.innerHTML += "student : "+student+"<br>";
+            area5.innerHTML += "sum : "+student.getSum()+"<br>";
+            area5.innerHTML += "avg : "+student.getAvg()+"<br>";
+
+            //in
+            //"속성명" in 객체명 : 해당 객체 내에 해당 속성이 존재할 경우 true반환,
+                                //아니면 false 반환
+            area5.innerHTML += "name 속성이 있음 ?"+("name" in student)+"<br>";
+            //true출력된다.
+            // ()로 구분을 지어줘야한다!
+
+            area5.innerHTML += "getSum 속성이 있음 ?"+("getSum" in student)+"<br>";
+            //true
+            area5.innerHTML += "avg 속성 있음 ?"+("avg" in student)+"<br>";
+            //false -> 속성이 진짜로 있어야 true출력된다.
+
+            //with
+            //with에 추가한 객체안에 있는 속성을 객체명을 제시하지않고 사용가능하다.
+            with(student){
+                area5.innerHTML += "학생이름 : "+student.name +"<br>";
+                area5.innerHTML += "국어점수 : "+kor+"<br>";
+                area5.innerHTML += "수학점수 : "+student.math+"<br>";
+                area5.innerHTML += "영어점수 : "+eng+"<br>";
+                area5.innerHTML += "총점 : "+getSum()+"<br>";
+                area5.innerHTML += "평균 : "+getAvg()+"<br>";
+            }
+            
+        }
+    </script>
+
+    <br><hr>
+
+
+    <h3>* 객체의 속성 추가 및 제거</h3>
+    <button onclick="test6()">실행하기</button>
+    <div id="area6" class="area small"></div>
+
+    <script>
+        function test6(){
+            let student = {};
+                //객체에 속성 추가
+                student.name ="김채영";
+                student.hobby =["게임","영화보기"];
+                student.dream = "프로그래머";
+                student.age = 23;
+
+                student.dream = "영화감독";
+                // 같은 key값인 경우, 마지막 key값이 출력된다.
+                console.log(student);
+                //{name: '김채영', hobby: Array(2), dream: '프로그래머', age: 23}가 출력
+
+                with(student){
+                    address = "서울";
+                }
+                //with은 읽기전용이라 속성추가가 안된다.
+                //with안에 속성추가한것은 출력되지 않는다.
+                console.log(student);
+
+
+                //새로운거
+                let area6 = document.querySelector("#area6");
+                area6.innerHTML += "student : "+student+"<br>";
+
+                //메소드 속성 추가
+                student.toString = function(){
+                    //재정의한 메소드
+                    let str = "name : "+this.name+"<br>";
+                        str += "hobby : "+this.hobby+"<br>";
+                        str += "dream : "+this.dream+"<br>";
+                        str += "age : "+this.age+"<br>";
+                    return str; 
+                };
+                area6.innerHTML += student/*.toString()*/;
+                // student.toString()이 내부적으로 자동으로 호출되고있다.
+        
+
+            //객체 속성 제거
+            delete(student.hobby); 
+            area6.innerHTML += student; // hobby가 undefined라고 출력된다.
+            console.log(student);// 속성 hobby가 없어졌다.
+        }
+    </script>
+
+
+
+
+
+
+
+
+
+
+
 
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br>

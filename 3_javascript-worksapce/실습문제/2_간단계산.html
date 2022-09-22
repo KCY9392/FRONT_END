@@ -54,7 +54,8 @@
 
             let result = document.querySelector("#result");
 
-            result.style.background = "white";
+            result.style.backgroundColor = "white";
+            result.style.color = "black";
             result.innerHTML = null;
 
             let calval = select();
@@ -76,7 +77,8 @@
             }
             else if(calval === "div"){
                 if(Number(num2) == 0 || Number(num1) == 0){
-                    result.style.background = "red";
+                    result.style.backgroundColor = "red";
+                    result.style.color = "white";
                     result.innerHTML += "연산불가";
                 }else{
                     result.innerHTML += Number(num1) / Number(num2);
@@ -84,13 +86,13 @@
             }
             else if(calval === "ro"){
                 if(Number(num2) == 0 || Number(num1) == 0){
-                    result.style.background = "red";
+                    result.style.backgroundColor = "red";
+                    result.style.color = "white";
                     result.innerHTML += "연산불가";
                 }else{
                     result.innerHTML += Number(num1) % Number(num2);
                 }
             }
-
         }
     </script>
 
