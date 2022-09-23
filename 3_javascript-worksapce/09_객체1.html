@@ -232,7 +232,7 @@
             let area5 = document.querySelector("#area5");
 
             let student = {
-                name, // key와 value 명이 동일하면 이렇게 작성가능
+                name, // key와 value 명이 동일하면 이렇게 작성가능 name : name,
                 kor,
                 math,
                 eng,
@@ -262,6 +262,11 @@
             area5.innerHTML += "name 속성이 있음 ?"+("name" in student)+"<br>";
             //true출력된다.
             // ()로 구분을 지어줘야한다!
+
+            //hobby : movie
+            //student.hobby는 없는 속성이므로,
+            // in으로 속성이 있는 지 확인이 필요하다.
+
 
             area5.innerHTML += "getSum 속성이 있음 ?"+("getSum" in student)+"<br>";
             //true

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습문제</title>
+    <style>
+        input, button{
+            box-sizing: border-box;
+            height: 30px;
+        }
+
+        #btn{
+            background-color: pink;
+            border: 1px solid white;
+        }
+
+        .area{
+            background-color: rgb(246, 224, 228);
+            border: 2px solid palevioletred;
+            height: 300px;
+        }
+
+    </style>
+</head>
+<body>
+
+    
+    <h4>실습문제 1</h4>
+    <input type="text" id="inputName" placeholder="   - 를 포함한 문자열 입력">
+    <button onclick="test1()" id="btn">실습문제1 확인</button>
+    <input type="text" id="name" readonly>
+    
+    <script>
+        function test1(){
+            let name = document.querySelector("#inputName").value;
+            words = [];
+            words = name.split('-');
+
+            console.log(words);
+
+            //맨 앞단어 빼고, 두번째부터 단어의 앞글자 대문자로
+            for(let i=1; i< words.length; i++){
+                words[i] = words[i][0].toUpperCase()+words[i].slice(1);
+                console.log(words[i]);
+            }
+            words = words.join('-');
+            //- 제거하기
+            name = words.replaceAll('-','');
+            
+            console.log(name); // listStyleType
+
+            // 출력창에 변경한 문자열 넣기
+            let result = document.querySelector("#name");
+            result.value = name;
+        }
+    </script>
+
+    <br><br><hr>
+
+    <h4>실습문제 2</h4>
+
+    <button onclick="test2()">실습문제2 확인하기</button>
+    <br><br>
+    <div id="area1" class="area"></div>
+    
+
+    <script> 
+        let objArr = [
+            {name : "민경민", age : 25},
+            {name : "황정민", age : 52},
+            {name : "안유진", age : 22},
+            {name : "지아코", age : 28},
+            {name : "박해진", age : 40}
+        ];
+
+        function test2(){
+            let area1 = document.querySelector("#area1");
+
+            let result = objArr.sort((a,b) => a.age - b.age);
+            
+            console.log(result);
+            //area1.innerHTML = result;
+
+            let newArr = [];
+            newArr = result;
+            
+            
+        }
+    </script>
+
+
+
+
+</body>
+</html>

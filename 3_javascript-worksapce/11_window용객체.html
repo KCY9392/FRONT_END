@@ -28,7 +28,7 @@
     </style>
 </head>
 
-<body>
+<>
     <h1>window용 객체</h1>
     <p>
         windwo객체는 자바스크립트의 최상위객체이며,
@@ -68,7 +68,7 @@
                     "속성 = 값, 속성 = 값, 속성 = 값 , ..."
             */
 
-            window.open("http://www.naver.com","경민창",
+            window.open('http://www.naver.com',"경민창",
                 "width=500, height=500, resizable =yes,"
                 +"location=yes, menubar=yes, scrollbars=yes"
                 +"status=yes, toolbar=yes");
@@ -126,7 +126,7 @@
         function test3(){
             let area1 = document.querySelector("#area1");
 
-            setInterval(function(){
+            let currentTime = setInterval(function(){
                 let now = new Date();
                 let hour = now.getHours();
                 let min = now.getMinutes();
@@ -138,8 +138,11 @@
                 min = min < 10 ? "0"+min : min;
                 sec = sec < 10 ? "0"+sec : sec;
 
-                area1.innerHTML += `${hour} : ${min} : ${sec}<br>`;
-            }, 1000)
+                area1.innerHTML = `${hour} : ${min} : ${sec}`;
+            }, 1000);
+            
+            //그만하고싶다면,
+            clearInterval(currentTime(currentTime),1000000);
         }
         //setInterval : 내가 지정한 시간간격마다 "매번" 함수를 실행한다.
     </script>
@@ -242,6 +245,9 @@
             // 2. textNode 객체 생성 : document.createTextNode("문구"); 
             let textNode = document.createTextNode("안녕하세요");
 
+            // 동적 <-> 정적
+
+
             // 3. 두 개의 노드를 연결(요소노드의 하위로 텍스트노드 추가)
             //    요소노드.appendChild(텍스트노드 나 요소노드);
             elementNode.appendChild(textNode);// <h3>안녕하세요</h3>
@@ -263,6 +269,59 @@
             // 즉, 노드는 객체이다.
         }
     </script>
+
+    <br><hr>
+
+
+
+    <h4>- 텍스트노드가 존재하지 않는 노드 생성(시작태그만 존재한다)</h4>
+
+    <button onclick="test5()">실행확인</button>
+    <div id="area3" class="big"></div>
+
+    <script>
+        function test5(){
+            let img = document.createElement("img");
+
+            // <img src = "경로" width,height 적용>
+            img.src="https://www.iei.or.kr/resources/images/main/main_renewal/top_logo.jpg"; 
+            img.width = "200";
+            img.height = "50";
+
+            document.querySelector("#area3").appendChild(img);
+        }   
+
+        
+    </script>
+
+    <br><hr>
+
+
+
+
+    <h4>- 노드 삭제</h4>
+    <button onclick="test6()">삭제</button>
+    <script>
+        function test6(){
+            // 지우고자하는 요소.remove();
+            document.querySelector("#area3").firstChild.remove();
+            //document.body.remove(); //body 다 지워짐. -> 잘안씀
+        }
+    </script>
+
+    <br><hr>
+
+
+
+
+    <h4>- </h4>
+
+
+
+
+
+
+
 
     <br><br><br><br><br><br><br><br><br><br><br><br><br>
     <br><br><br><br><br><br><br><br><br><br><br><br><br>
