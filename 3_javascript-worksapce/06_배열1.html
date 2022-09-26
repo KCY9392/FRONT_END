@@ -54,7 +54,7 @@
 
             //방법3)for(let 변수명 in 순차적으로접근할객체)
             for(let i in arr){// i=0부터 마지막 인덱스까지 자동으로 증가
-                //area1.innerHTML += arr[i] + "<br>";
+              //  area1.innerHTML += arr[i] + "<br>";
             }
             // in은 배열안의 모든 key값에 접근
            
@@ -71,13 +71,13 @@
             console.log(arr);
 
             for(let i in arr){// i=0부터 마지막 인덱스까지 자동으로 증가
-                //area1.innerHTML += arr[i] + "<br>";
+                area1.innerHTML += arr[i] + "<br>";
                 //newkey의 value값이 추가되었다
                 //value값이 출력되는 것을 원치않으면, in을 사용하면 안된다.
                 //객체
             }
 
-            for( let item of arr){
+            for( let item in arr){
                 area1.innerHTML += item+"<br>";
             }
         }

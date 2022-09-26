@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- 오프라인 방식 -->
+    <!-- <script src="resouces/js/jquery-3.6.1.js"></script> -->
+    
+    <!-- 온라인 방식 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <title>개요</title>
+</head>
+<body>
+    <h1>jQuery 개요</h1>
+    <h3>* jQuery 란?</h3>
+    <p>
+        기존에 자바스크립트 언어 만으로 구현하기에<br>
+        복잡했던 구문 작성들을 간소화 하기위해 "존레식"에 의해 개발된<br>
+        Javascript기반 라이브러리(유용한 기능들 모음집) <br>
+        즉, Javascript 언어로 유용한 함수나 내용들이 이미 만들어져있는 모음집이라고 생각하면된다.<br>
+
+        복잡한 자바스크립트 구문을 보다 짧고 쉽게 개발 가능<br>
+        (적은 양의 코드로 빠르고 풍부한 기능 제공)<br><br>
+
+        - DOM 요소와 관련된 스크립트를 보다 쉽게 구현할 수 있다.<br>
+        - AJAX (비동기통신), 이벤트처리 등 폭넓게 지원한다.<br>
+        - jQuery와 관련된 확장된 플러그인, 오픈API등을 지원한다.<br>
+          (차트, 슬라이드, 애니메이션 등등)<br>
+    </p>
+
+    <br>
+    <hr>
+
+    <h3>* jQuery 라이브러리 연결방법</h3>
+    <p>
+        head태그 내부에 script태그로 jQuery 관련 .js파일 가져오기<br>
+        단, 오프라인/온라인 방식이 있음<br>
+        - jQuery 공식 사이트 : <a href="https://jquery.com" target="_blank">공식사이트</a><br>
+
+        1. jQuery 라이브러리 직접 다운로드 받은 후, 경로 지정한다(오프라인 방식)<br>
+            - .js 파일을 내가 직접 다운로드 받아 저장한 후, 해당 지정된 파일경로를 작성하는 방법<br>
+        <!--
+            (UnCompressed : 개발자 전용)
+            일반 js파일 : 개발자가 알아보기 쉽도록 주석, 코드정렬 등을 활용해 가시성을 유지하는 파일
+
+            (Compressed : 배포 전용)
+            min.js 파일 : 주석, 들여쓰기, 띄어쓰기 등을 최소화해서
+                          (파일의 용량을 줄이기 위해)
+        -->
+    <br>
+        2. CDN(content Delievery Network)를 통한 연결(온라인 방식)<br>
+            - 라이브러리를 제공하는 사이트 url을 제시해서 파일 경로로 지정한다.
+
+    </p>
+
+    <br><hr>
+
+
+
+
+
+    <h3>* jQuery 구문 작성하기</h3>
+    <p>
+        <b>
+            jQuery 구문으로 DOM요소를 다루는 구문을 기본적으로 작성할것이기 때문에<br>
+            jQuery 명령은 문서상에 요소들이 다 로드(만들어지고나서) 된 후에 실행되어야한다
+        </b>
+    </p>
+    <br><br>
+
+    - 순수 자바스크립트에서의 해당 내용은
+    <pre>
+        window.onload = function(){
+            실행내용;
+        }
+        onload 함수 : 페이지가 로딩되면 자동으로 실행되는 함수
+                      단, Javascript 에서의 window.onload구문은 
+                      해당 문서의 요소들도 다 로드 되고,
+                      + 연동되어있는 외부문서들도 다 가지고 온 후에 실행된다.
+                      -> window.onload는 해당 문서에서 단 한번만 작성 가능하다.
+    </pre>
+
+
+    - jquery에서의 해당 내용은 3가지 구문으로 제공함
+
+    <pre>
+        1) jQuery(document).read(function(){
+            실행내용;
+        });
+
+        2) $(document).ready(function(){
+            실행내용;
+        });
+
+        3) $(function(){  -> 가장 간편한 방법 but, 복잡한 에러가 있을 수도 있다.
+            실행내용;
+        });
+
+        jQuery에서의 해당 function은 dom요소들만 다 로드되면 바로 실행된다
+        여러번 기술 가능하고, 갯수 제한 없다.
+
+    </pre>
+
+    <script>
+        // 자바스크립트 언어
+        window.onload = function(){
+            console.log("문서 읽어들이기 완료");
+        }
+
+        // 방식 1)
+        jQuery(document).ready(function(){
+            console.log("문서 읽어들이기 완료 1");
+        });
+
+        // 방식 2)
+        $(document).ready(function(){
+            console.log("문서 읽어들이기 완료 2");
+        });
+
+
+        // 방식 3) - 가장 쉬운 방식
+        $(function(){
+            console.log("문서 읽어들이기 완료 3");
+
+            // h3요소 가져와서 배경색을 노란색으로 바꿔보기
+            // - 순수 자바스크립트 방식이다.
+            /*let h3Arr = document.getElementsByTagName("h3");
+    
+            for(let i=0; i<h3Arr.length; i++){
+                h3Arr[i].style.backgroundColor = "rgb(251, 214, 219)";
+            }*/
+
+
+            // -jQuery방식
+            $("h3").css("backgroundColor","rgb(251, 214, 219)");
+            // $("선택자") : 해당 요소들을 선택
+            // .css() : 선택된 요소들의 스타일과 관련된 기능을 수행.
+
+            $("pre").css("color","palevioletred");
+        });
+
+
+        
+    </script>
+
+    <!-- <h3>dddd</h3> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

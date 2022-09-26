@@ -19,7 +19,7 @@
         .area{
             background-color: rgb(246, 224, 228);
             border: 2px solid palevioletred;
-            height: 300px;
+            height: 150px;
         }
 
     </style>
@@ -27,29 +27,25 @@
 <body>
 
     
+
+    
     <h4>실습문제 1</h4>
     <input type="text" id="inputName" placeholder="   - 를 포함한 문자열 입력">
-    <button onclick="test1()" id="btn">실습문제1 확인</button>
+    <button onclick="test1()" id="btn">실습문제 1 확인</button>
     <input type="text" id="name" readonly>
     
     <script>
-        function test1(){
+        function test(){
             let name = document.querySelector("#inputName").value;
-            words = [];
+            let words = [];
             words = name.split('-');
-
-            console.log(words);
 
             //맨 앞단어 빼고, 두번째부터 단어의 앞글자 대문자로
             for(let i=1; i< words.length; i++){
                 words[i] = words[i][0].toUpperCase()+words[i].slice(1);
                 console.log(words[i]);
             }
-            words = words.join('-');
-            //- 제거하기
-            name = words.replaceAll('-','');
-            
-            console.log(name); // listStyleType
+            name = words.join("");
 
             // 출력창에 변경한 문자열 넣기
             let result = document.querySelector("#name");
@@ -57,11 +53,33 @@
         }
     </script>
 
+    <script>//강사님 version
+        function test1(){
+            let result = document.querySelector("#name");
+
+            let str = document.querySelector("#inputName").value;
+            let strArr = str.split("-");
+            let name = strArr.map(function(item,index,array){
+                if(index != 0){
+                    return item.charAt(0).toUpperCase() + item.slice(1);
+                }else{
+                    return item;
+                }
+            }).join("");
+
+            result.value = name;
+        }
+    </script>
+
     <br><br><hr>
+
+
+
+
 
     <h4>실습문제 2</h4>
 
-    <button onclick="test2()">실습문제2 확인하기</button>
+    <button onclick="test2()" id="btn">실습문제 2 확인하기</button>
     <br><br>
     <div id="area1" class="area"></div>
     
@@ -80,18 +98,198 @@
 
             let result = objArr.sort((a,b) => a.age - b.age);
             
-            console.log(result);
-            //area1.innerHTML = result;
-
-            let newArr = [];
-            newArr = result;
-            
-            
+            for(let key of result){
+                with(key){
+                area1.innerHTML += "이름 : "+name   
+                                + ", 나이 : "+age+"<br>";
+                } 
+            }
+            /* 강사님 version
+            objArr.forEach( item => {item.toString = () =>
+                "이름 : "+item.name+", 나이 : " + item.age+"<br>";
+            })
+            area1.innerHTML += objArr;
+            */
         }
     </script>
 
+    <br><br><hr>
 
 
+
+
+
+    <h4>실습문제 3</h4>
+    
+    <button onclick="test3()" id="btn">실습문제 3 확인</button>
+    <br><br>
+    <div id="area2" class="area"></div>
+    <script>
+        let objArr2 = [
+            {name : "경민", firstName : "민", hobby : "movie"},
+            {name : "프로", firstName : "민", hobby : "cocain"},
+            {name : "현정", firstName : "장", hobby : "baseball"},
+            {name : "상엽", firstName : "이", hobby : "baseball"},
+            {name : "도윤", firstName : "김", hobby : "baseball"},
+        ];
+        function test3(){
+            for(let key of objArr2){
+                with(key){
+                    area2.innerHTML += firstName + name +"<br>";
+                }
+            }
+
+            //강사님 version
+            let strArr = objArr2.map(function(item){
+                return "<br>"+item.firstName + item.name;
+            });
+
+            area2.innerHTML += strArr;
+        }
+
+    </script>
+
+    <br><br><hr>
+
+
+
+
+
+    <h4>실습문제 4</h4>
+
+    <button onclick="test4()" id="btn">실습문제 4 확인</button>
+    <br><br>
+    <div id="area3" class="area"></div>
+
+    <script>
+        let area3 = document.querySelector("#area3");
+
+        let arr = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
+
+        function filterArr(arr, a, b) {
+            return arr.filter(item => (a <= item && item <= b));
+        }
+        
+        function test4(){
+            let aTob = filterArr(arr,7,14);
+
+            let result = aTob.sort((a, b) =>  b - a);
+        
+            for(let i=0; i<result.length; i++){
+                if(i == result.length - 1){
+                    area3.innerHTML += result[i];
+                }else{
+                area3.innerHTML += result[i] + ", ";
+                }
+            }
+        }
+
+    </script>
+
+    <br><br><hr>
+
+
+
+
+
+    <h4>실습문제 5</h4>
+
+    <button onclick="test5()" id="btn">실습문제 5 확인</button>
+    <br><br>
+    <div id="area4" class="area"></div>
+
+    <script>
+        let area4 = document.querySelector("#area4");
+
+        let arr2 = [59,33,21,11,9,2,3,4,6,8,99,0,12,14,16,7];
+
+        function test5(){
+            /*
+            // 특정 범위 이외의 범위들 삭제
+            let fill = filterArr(arr2,7,14);
+
+            let str = "";
+
+            for(let i=0; i<fill.length; i++){
+                if(i == fill.length-1){
+                    str+= fill[i];
+                }else{
+                    str+= fill[i]+", ";
+                }
+            }
+
+            let sp = arr2.splice(0,arr2.length,str);
+            area4.innerHTML += arr2;
+            
+            //잘 모르겠어서 일단 이 방법으로 했습니당..
+            */
+
+            //강사님 version
+           area4.innerHTML += "원본배열 : "+arr2+"<br>";
+
+            let start = +prompt("시작값을 입력해주세요");
+            let end = +prompt("종료값을 입력해주세요");
+
+            for(let i=0; i<arr2.length; i++){
+                if( !(start <= arr2[i] && arr2[i] <= end) ){
+                    arr2.splice(i, 1); // 삭제는 된 상황
+                    i--;
+                }
+            }
+
+            area4.innerHTML += "요소 삭제후 : "+arr2+"<br>";
+        }
+    </script>
+
+    <br><br><hr>
+
+
+
+
+
+
+    <h4>실습문제 6</h4>
+
+    <button onclick="test6()" id="btn">실습문제 6 확인</button>
+    <br><br>
+    <button onclick="f1()" id="btn">1번</button>
+    <button onclick="f2()" id="btn">2번</button>
+    <button onclick="f3()" id="btn">3번</button>
+    <button onclick="f4()" id="btn">4번</button>
+    <br><br>
+
+    <div id="area5" class="area"></div>
+
+    <script>
+
+        function f1(){
+            let test = () => alert("민프로");
+            test();
+        }
+
+
+        function f2(){
+            let test = (e) => {
+                if(e == "rudals") return '밥은 잡솼서?' 
+            };
+            area5.innerHTML += test("rudals");
+            // area5.innerHTML += test("rlacod"); -> 출력X
+        }
+
+        
+        function f3(){
+            [1,2,3,4,5].forEach((item) =>
+                console.log(item)
+            )
+        }
+
+
+        function f4(){
+            area5.innerHTML += [1,2,3,4,5].filter((item,index) => {
+                if(index != 0 && item % 2 == 0) return true
+            });
+        }
+    </script>
 
 </body>
 </html>
