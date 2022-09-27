@@ -35,19 +35,21 @@
             <legend style="background-color: rgb(251, 214, 219); border-radius: 8px;">&nbsp;&nbsp;&nbsp;&nbsp;<b>회원가입</b>&nbsp;&nbsp;&nbsp;&nbsp;</legend>
             
              아이디<br>
-                <input type="text" id="userId" name="ID" size="35" maxlength="20" placeholder="영문 소문자,숫자,특수기호(_,-)5~20"
-                onkeyup="checkId(this);"/>
+                <input type="text" id="userId" size="35" maxlength="20" placeholder="영문 소문자,숫자,특수기호(_,-)5~20"
+                onkeyup="checkId(this);"/> 
+                <!-- 정규표현식 : /^[a-z\d_-]{5,20}$/; -->
                 <div id="areaId">
                 </div>
                     
                 <br><br>
             
               비밀번호<br>
-                <input type="password" id="userPwd1" name="PW"  size="35" maxlength="15" placeholder="영문,숫자,특수문자 8~15"/>
+                <input type="password" id="userPwd1"  size="35" maxlength="15" placeholder="영문,숫자,특수문자 8~15"/>
+                <!-- 정규표현식 : /^[a-zA-Z\d!@#$%^&*_-]{8,15}$/; -->
                 <br><br>
             
               비밀번호 재확인<br>
-                <input type="password" id="userPwd2" name="PW" size="35" maxlength="15" placeholder="영문,숫자,특수문자 8~15" 
+                <input type="password" id="userPwd2" size="35" maxlength="15" placeholder="영문,숫자,특수문자 8~15" 
                  onblur="checkPwd(this)"/>
                  <div id="areaPwd">
                  </div>
@@ -55,6 +57,7 @@
 
               이름<br>
                 <input type="text" id="userName"  size="35" maxlength="15"/>
+                <!-- 정규표현식 : /^[가-힣]{2,}$/; -->
                 <br><br>
             
 
@@ -97,25 +100,57 @@
             let pwd2 = document.querySelector("#userPwd2");
             let name = document.querySelector("#userName");
 
+        //유효성 검사
+            // 아이디 
+            let regExp = /^[a-z\d_-]{5,20}$/;
+            if(!regExp.test(id.value)){
+                alert("유효한 아이디를 입력해주세요");
+                id.value = "";
+                id.focus();
+                return false;
+            }
 
+            // 비밀번호
+            regExp = /^[a-zA-Z\d!@#$%^&*_-]{8,15}$/;
+            if(!regExp.test(pwd1.value)){
+                alert("유효한 비밀번호를 입력해주세요");
+                pwd1.value = "";
+                pwd1.focus();
+                return false;
+            }
+
+            // 이름 확인
+            regExp = /^[가-힣]{2,}$/;
+            if(!regExp.test(name.value)){
+                alert("유효한 이름을 입력해주세요");
+                name.value = "";
+                name.focus();
+                return false;
+            }
+
+        //값을 입력하지 않았을 경우,
+            //아이디
             if(id.value == ""){
                 alert("아이디를 입력해주세요");
                 id.focus();
                 return false;
             }
 
+            //비밀번호
             if(pwd1.value == ""){
                 alert("비밀번호를 입력해주세요");
                 pwd1.focus();
                 return false;
             }
 
+            //비밀번호확인
             if(pwd2.value == ""){
                 alert("비밀번호 확인을 입력해주세요");
                 pwd2.focus();
                 return false;
             }
 
+            //이름확인
             if(name.value == ""){
                 alert("이름을 입력해주세요");
                 name.focus();
@@ -123,6 +158,7 @@
             }
 
 
+        // 아이디 user01과 일치시 
             if(id.value == "user01"){
                 alert("사용할 수 없는 아이디입니다.");
                 id.value = "";
@@ -130,6 +166,7 @@
                 return false;
             }
 
+        // 비밀번호와 비밀번호 확인 값 비교
             if(pwd1.value != pwd2.value){
                 alert("비밀번호가 일치하지않습니다.");
                 pwd2.value = "";
@@ -138,12 +175,13 @@
             }
 
             
-                alert(name.value +"님 회원가입이 성공적으로 완료되었습니다^^");
-                id.value="";
-                pwd1.value="";
-                pwd2.value="";
-                name.value="";
-                return true;
+        // 다 성공시
+            alert(name.value +"님 회원가입이 성공적으로 완료되었습니다^^");
+            id.value="";
+            pwd1.value="";
+            pwd2.value="";
+            name.value="";
+            return true;
             
             
             
