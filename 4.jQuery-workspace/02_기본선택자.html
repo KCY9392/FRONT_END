@@ -91,9 +91,59 @@
         });
     </script>
 
+    <hr>
+
+    <h3>* 클래스 선택자</h3>
+
+    <p>
+        특정한 클래스 속성을 가진 요소들을 선택하조가 할때 사용
+    </p>
+
+    <h1 class="item">class1</h1>
+    <h1 class="item select">class2</h1>
+    <h1 class="item select">class3</h1>
+
+    <script>
+        $(function(){
+            // 순수자바스크립트 방식
+            let items = document.getElementsByClassName("item");
+            
+            for(let i=0; i<items.length; i++){
+                items[i].style.color = "orange";
+                items[i].onclick = function(){
+                    console.log("h1요소 클릭됨");
+                }
+            }
+
+            // jQuery 방식 => $(".클래스명")
+            $(".select").css("backgroundColor","skyblue");
+            $(".select").click(function(){
+                alert("select클래스 클릭됨");
+            });
 
 
+        });
+    </script>
 
+    <!--
+    * 요소 선택하는 방법
+
+              순수 자바스크립트 방식             |           jQuery 방식
+        ----------------------------------------------------------------------
+        document.getElementById("아이디명")     |       $("#아이디명")
+        document.getElementsByTagName("태그명") |       $("태그명")
+        document.querySelectorAll(".클래스명")  |       $(".클래스명")
+
+
+    * 선택된 요소에 속성값을 변경하는 방법
+
+                순수 자바스크립트 방식                      |           jQuery 방식
+        ------------------------------------------------------------------------------------
+             선택된 요소객체의 속성에 접근해서               |      선택된 요소에 메소드 이용
+          스타일 관련 | .style.스타일속성 = "변경할 값";     |    .css("스타일속성","변경할 값");
+          내용   관련 | .innerHTML = "변경할 값";           |        .html("변경할 값");
+          이벤트 관련 | .on이벤트명 = function(){};         |      .이벤트명(function(){});
+    -->
 
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
