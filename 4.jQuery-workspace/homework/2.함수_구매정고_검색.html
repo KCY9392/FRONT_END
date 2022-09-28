@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.함수 구매정보 검색</title>
+
+    <style>
+        #t1,#t2,#t3{
+            width: 200px;
+            height: 15px;
+            border: 2px solid pink;
+        }
+
+        fieldset{
+            width: 400px;
+            border: 2px dashed pink;
+            background-color: rgb(252, 238, 240);    
+        }
+
+        legend{
+            text-align: center;
+            background-color: rgb(255, 201, 219);
+            border-radius: 50px;
+            border: 3px solid rgb(255, 201, 219);
+            font-weight: 600;
+        }
+
+        button{
+            background-color: rgb(255, 186, 223);
+            border: 3px solid rgb(255, 186, 223);
+            border-radius: 50px;
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        [type=number], textarea{
+            border: 2px solid pink;
+        }
+
+        #area1{
+            border: 2px dashed pink;
+            background-color: rgb(252, 238, 240);    
+            height: 150px;
+            width: 425px;
+        }
+
+
+        #area2,#area3,#area4{
+            border: 2px dashed pink;
+            background-color: rgb(252, 238, 240);    
+            height: 100px;
+            width: 425px;
+            text-align: center;
+        }
+    </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+</head>
+<body>
+    <h1>Practice4</h1>
+
+    <form>
+        <fieldset>
+            <legend>구매정보</legend>
+            <ul><b>
+                <li>구매자 : <input type="text" id="t1" placeholder="구매자의 이름을 입력하세요"></li>
+                <li>상품명 : <input type="text" id="t2" placeholder="구매 상품 명을 입력하세요"></li>
+                <li>  가격 : <input type="text" id="t3" placeholder="구매 가격을 입력하세요"></li>
+                <li>구매 수량 : <input type="number" id="n1" min="10" max="100" step="10" placeholder="최소 10."></li>
+                <li>납품등급 : <input type="range" id="s1" min="1" max="9" value="1" step="2"/></li>
+                <li>기타사항 : <textarea style="height:80px; width:300px;"></textarea></li>
+            </ul></b>
+        </fieldset>
+    </form>
+    <br>
+    <button type="submit">입력 값 출력하기</button>
+    <br><br>
+    <div id="area1"></div>
+
+    <script>
+         $(":submit").click(function(){
+            $("#area1").html("구매자명 : " + $("#t1").val()
+                             +"<br>상품명 : "+$("#t2").val()
+                             +"<br>가격 : "+$("#t3").val()
+                             +"<br>구매수량 : "+$("#n1").val()
+                             +"<br>납품등급 : "+$("#s1").val()
+                             +"<br>기타사항 : "+$("textarea").val());
+        });
+    </script>
+
+<!----------------------------------------------------------------------->
+    <br><hr style="border: 2px dashed deeppink;">
+
+    <h1>Practice5</h1>
+
+    <form>
+        <fieldset style="text-align: center;">
+            <legend>검색할 항목을 선택하세요</legend>
+            <b>
+            <input type="radio" id="r1" name="r"> 제목
+            <input type="radio" id="r2" name="r"> 날짜
+            <input type="radio" id="r3" name="r"> 작성자 
+            </b>
+        </fieldset>
+    </form>
+
+    <br>
+
+    <!-- 제목 검색 -->
+    <div id="area2" hidden>
+        <form>
+            <p>
+              <b>검색할 제목을 입력하세요 :</b>
+            </p>
+            <input type="text"> 
+            <button type="submit1">검색</button>
+        </form>
+    </div>
+
+
+    <!-- 날짜 검색 -->
+    <div id="area3" hidden>
+        <form>
+            <p>
+                <b>검색할 날짜를 선택하세요 : </b>
+            </p>
+            <input type="date"> - <input type="date"> 
+            <button type="submit2">검색</button>
+        </form>
+    </div>
+
+
+    <!-- 작성자 검색 -->
+    <div id="area4" hidden>
+        <form>
+            <p>
+              <b>검색할 작성자 아이디를 입력하세요 :</b>
+            </p>
+            <input type="text"> 
+            <button type="submit3">검색</button>
+        </form>
+    </div>
+
+
+    <script>
+        $("#r1").click(function(){
+            $("#area3").hide();
+            $("#area4").hide();
+            $("#area2").show();
+        });
+        $("#r2").click(function(){
+            $("#area2").hide();
+            $("#area4").hide();
+            $("#area3").show();
+        });
+        $("#r3").click(function(){
+            $("#area2").hide();
+            $("#area3").hide();
+            $("#area4").show();
+        });
+    </script>
+
+
+    <br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

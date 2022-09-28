@@ -252,7 +252,8 @@
     <script>
         function test(){
             //현재 선택되어있는 목록값 가져오기
-            console.log($("[name='national']>option:selected").val(), $("option:selected").html());
+            console.log($("[name='national']>option:selected").val(), 
+                        $("option:selected").html());
             
             $("#result").html($("option:selected").html());
             // value값말고 option 시작태그,종료태그 사이의 텍스트를 출력하고싶다면 -> html() 사용

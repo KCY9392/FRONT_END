@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content영역관련메소드</title>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+</head>
+<body>
+    <h1>Content 영역 (innerHTML, innerText) 관련 메소드</h1>
+
+    <h3> * html("문구") 메소드 : innerHTML속성과 관련된 메소드</h3>
+
+    <p>
+        선택된 요소의 Content 영역(시작태그와 종료태그 사이)을 리턴해주거나 또는 변경해주는 메소드<br>
+        - $("선택자").html() : 선택된 요소의 content 영역의 값을 반환해줌(이때 html태그까지 포함)<br>
+        - $("선택자").html("문구") : 선택된 요소의 content영역 값을 해당 문구로 변경해준다<br>
+                                    (전달하는 문구에 html태그가 있을 경우, 태그로 해석해준다)<br>
+    </p>
+
+    <h1 id="test1">
+        <a>네이버로</a>
+    </h1>
+
+    <h1 id="test2">
+        
+    </h1>
+
+    <script>
+        $(function(){
+        //자바스크립트 방식
+            let temp = document.getElementById("test1").innerHTML;
+            console.log(temp);
+
+        // jQuery 방식
+            let temp2 = $("#test1").html();
+            console.log(temp2);
+
+            $("#test2").html(temp2);
+            //id가 test2인 a태그 텍스트 출력됨.
+
+            $("#test2").children().attr("href","https://www.naver.com");
+            //위에서 만든 태그에 href속성을 추가함.
+        });
+    </script>
+</body>
+</html>
