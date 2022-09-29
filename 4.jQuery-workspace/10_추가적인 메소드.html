@@ -115,34 +115,107 @@
            let output = "";
 
            // <a href="url주소">도메인명</a>
-           //1번째 방법
            $.each(links, function(index, item){
-                output += "<a href='"+item.link+"'>"+item.name+"</a><br>";
-           });
+                //1번째 방법
+                //output += "<a href='"+item.link+"'>"+item.name+"</a><br>";
 
-           $("#area1").html(output);
+                //jQuery로 직접 추가하는방법
+                let a = ($("<a></a>").attr("href",item.link).html(item.name+"<br>"));
+                $("#area1").append(a);
+            });
+
+           //$("#area1").html(output);
         });
     </script>
 
+    <br><br>
 
+    <!--
+        대표적으로 each메소드를 사용하는 경우
+        : 선택된 여러개의 요소에 순차적으로 접근하고자할때
+    -->
 
+    <div id="wrap">
+        <h1>item-1</h1>
+        <h1>item-2</h1>
+        <h1>item-3</h1>
+        <h1>item-4</h1>
+        <h1>item-5</h1>
+    </div>
 
+    <script>
+        $(function(){
+            //[h1, h1, h1, h1, h1]
+            $("#wrap").children().each(function(i, el){
+                // el은 순차적으로 접근한 요소 객체
+                //console.log(el);
 
+                //el.addClass("highlight-0");
+                //el.addClass()는 함수가 아니라고 에러가 뜨고있다.
+                //el은 자바스크립트 방식으로 선택된 요소이기때문에 안됨.
 
+                //해결방법1. $로 감싸서 jQuery로 형변환해주기
+                //$(el).addClass("highlight-"+i);
 
+                //해결방법2. 자바스크립트로 해결.
+                //el.className = "highlight-"+i; // 덮어씌우기용
 
+                //해결방법3. $(this) -> 순차적으로 접근되는 요소 객체
+                $(this).addClass("highlight-"+i);
+            })
+        });
+    </script>
 
+    <!-- jQuery 방식으로 자바스크립트 방식의 요소 객체 바꿔보기 -->
+    <div id="test">
+        안녕
+    </div>
 
+    <script>
+        $(function(){
+            //자바스크립트 방식 요소 선택
+            let div = document.querySelector("#test");
+            
+            //자바스크립트 방식 css 변경
+            div.style.backgroundColor = "pink";
 
+            //jQuery 방식으로 하려면
+            //div.css("backgroundColor","pink");
 
+            $(div).css("backgroundColor","pink");
+        });
+    </script>
 
+    <br><hr>
 
+    <h3>* is 메소드</h3>
 
+    <p>
+        $("선택자").is("선택자") <br>
+        선택된 요소가 내가 전달한 전달값과 일치하는 지 판단해서 그에 해당하는 논리값(true,false) 반환<br>
+    </p>
 
+    <h3>test1</h3>
+    <h3 class="test">test2</h3>
+    <h3>test3</h3>
+    <h3 class="test">test4</h3>
+    <h3>test5</h3>
+    <h3 class="test">test6</h3>
 
-
-
-
+    <script>
+        $(function(){
+            //h3요소객체를 가져와서 순차적으로 접근한 후 해당요소 클래스에 test클래스를 가지고 있으면
+            //배경색을 pink로, 가지고 있지 않으면, 배경색을 red로 변경
+            // each, is, css
+            $("h3").each(function(index, item){
+                if($(this).is(".test")){ // this를 item이라고 해도된다.
+                    $(this).css("backgroundColor","pink");     
+                }else{
+                    $(this).css("backgroundColor","red");
+                }
+            });
+        });
+    </script>
 
 
     <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
