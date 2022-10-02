@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시판 목록 만들기</title>
+
+    <style>
+       legend{
+            text-align: center;
+            font-weight: 800;
+            font-size: 20px;
+            background-color: pink;
+            border: 6px solid pink; 
+            border-radius: 30px;
+        }
+
+        fieldset{
+            background-color: rgba(250, 214, 220, 0.414);
+            border: 3px solid lightgray;
+            text-align: initial;
+            height: 220px;
+        }
+
+        form{
+            width: 600px;
+            position: relative; 
+            /* 자식요소에 절대적인 위치 지정할 수 있게함 */
+        }
+
+        div{
+            position: absolute;
+            /* 부모요소로부터 절대적인 위치 지정할 수 있게함 */
+            /* top부터 위치, left부터 위치 지정*/
+            top:60px;
+            left: 50px;
+        }
+
+
+        table {
+            width: 500px;
+            text-align: center;
+        }
+
+        table, th, td {
+            border: 1px solid lightgray;
+        }
+
+        thead{
+            background-color: rgba(251, 202, 210, 0.451);
+        }
+
+        tbody{
+            background-color: rgba(255, 255, 255, 0.616);
+        }
+
+        tfoot{
+            background-color: rgba(255, 170, 184, 0.774);
+        }
+        
+    </style>
+</head>
+<body>
+    <center><h1>게시판 목록</h1></center>
+    <br>
+    <center><form>
+        <fieldset>
+            <legend>게시판</legend>
+
+            <div>
+                <table>
+                    <caption><b>게시판 목록</b></caption>
+                    <thead>
+                        <tr>
+                            <th>번호</th>
+                            <th>제목</th>
+                            <th>작성자</th>
+                            <th>작성일</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>첫번째</td>
+                            <td>김채영</td>
+                            <td>2022-10-01</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>두번째</td>
+                            <td>민경민</td>
+                            <td>2022-10-02</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>세번째</td>
+                            <td>홍길동</td>
+                            <td>2022-10-03</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3">총인원</td>
+                            <td>3</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </fieldset>
+    </form></center>
+        
+</body>
+</html>
